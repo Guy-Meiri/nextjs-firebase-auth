@@ -1,30 +1,34 @@
-import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
 // import { useAuth } from '../context/AuthContext'
 
 const Signup = () => {
+  const { user, signup } = useAuth();
+
+  
   const [data, setData] = useState({
-    email: '',
-    password: '',
-  })
+    email: "",
+    password: "",
+  });
 
   const handleSignup = async (e: any) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-    //   await signup(data.email, data.password)
+        signup(data.email, data.password);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
 
-    console.log(data)
-  }
+    console.log(data);
+  };
 
   return (
     <div
       style={{
-        width: '40%',
-        margin: 'auto',
+        width: "40%",
+        margin: "auto",
       }}
     >
       <h1 className="text-center my-3 ">Signup</h1>
@@ -66,7 +70,7 @@ const Signup = () => {
         </Button>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
